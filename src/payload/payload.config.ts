@@ -44,6 +44,7 @@ export default buildConfig({
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
       beforeDashboard: [BeforeDashboard],
     },
+
     webpack: config => ({
       ...config,
       resolve: {
@@ -65,6 +66,44 @@ export default buildConfig({
   }),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
+  localization: {
+    locales: [
+      {
+        label: 'English',
+        code: 'en',
+      },
+      {
+        label: 'English (China)',
+        code: 'en-cn',
+        fallbackLocale: 'en',
+      },
+      {
+        label: 'English (Dubai)',
+        code: 'en-dubai',
+        fallbackLocale: 'en',
+      },
+      {
+        label: 'German',
+        code: 'de',
+      },
+      {
+        label: 'German (Austria)',
+        code: 'de-at',
+        fallbackLocale: 'de',
+      },
+      {
+        label: 'Spanish (Spain)',
+        code: 'es',
+      },
+      {
+        label: 'Spanish (Chile)',
+        code: 'es-cl',
+        fallbackLocale: 'es',
+      },
+    ],
+    defaultLocale: 'en',
+    fallback: true,
+  },
   globals: [Settings, Header, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

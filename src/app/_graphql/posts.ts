@@ -24,6 +24,7 @@ export const POST = `
         }
         createdAt
         publishedAt
+        status
         populatedAuthors {
           id
           name

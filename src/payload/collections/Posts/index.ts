@@ -8,8 +8,6 @@ import { Content } from '../../blocks/Content'
 import { MediaBlock } from '../../blocks/MediaBlock'
 import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
-import * as afterChangeHook from '../../hooks/afterChangeHook'
-import * as beforeChangeHook from '../../hooks/beforeChangeHook'
 import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { populateAuthors } from './hooks/populateAuthors'
@@ -44,6 +42,7 @@ export const Posts: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
+      localized: true,
       required: true,
     },
     {
@@ -55,29 +54,6 @@ export const Posts: CollectionConfig = {
         position: 'sidebar',
       },
     },
-    /*{
-      name: 'status',
-      type: 'select',
-      options: [
-        {
-          label: 'Draft',
-          value: 'draft',
-        },
-        {
-          label: 'Pending Approval',
-          value: 'pending',
-        },
-        {
-          label: 'Approved',
-          value: 'approved',
-        },
-        {
-          label: 'Rejected',
-          value: 'rejected',
-        },
-      ],
-      defaultValue: 'draft',
-    },*/
     {
       name: 'publishedAt',
       type: 'date',
@@ -95,9 +71,7 @@ export const Posts: CollectionConfig = {
             }
             return value
           },
-          //beforeChangeHook,
         ],
-        //afterChange: [afterChangeHook],
       },
     },
     {
@@ -146,6 +120,7 @@ export const Posts: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
+              localized: true,
               required: true,
               blocks: [CallToAction, Content, MediaBlock, Archive],
             },
